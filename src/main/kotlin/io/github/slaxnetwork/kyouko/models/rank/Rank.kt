@@ -6,5 +6,6 @@ import kotlinx.serialization.Serializable
 data class Rank(
     val id: String,
     val name: String,
-    val prefixId: String
+    val prefixId: String,
+    val color: String
 )

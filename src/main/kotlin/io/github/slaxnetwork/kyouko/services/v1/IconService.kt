@@ -8,6 +8,7 @@ import io.ktor.client.request.*
 class IconService(
     private val client: HttpClient
 ) {
+    @Deprecated(message = "cache icons.json on the server image instead of querying the api on startup.")
     suspend fun getAll(): Result<List<Icon>> {
         return client.get {
             url("/v1/icons")

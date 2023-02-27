@@ -6,5 +6,5 @@ import kotlinx.serialization.Serializable
 @Serializable
 data class ProfileSettings(
     @SerialName("language")
-    val language: String
+    var language: String
 )

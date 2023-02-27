@@ -5,5 +5,5 @@ import kotlinx.serialization.Serializable
 @Serializable
 data class PayloadData<T>(
     val error: Boolean,
-    val data: T?
+    val data: T? = null
 )

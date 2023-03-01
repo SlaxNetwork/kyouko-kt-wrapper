@@ -18,7 +18,7 @@ class ProfileService(
         }.bodyAsResult()
     }
 
-    suspend fun updateLanguage(uuid: UUID, language: String): Result<EmptyBody> {
+    suspend fun updateLanguage(uuid: UUID, language: String): Result<Unit> {
         return client.patch {
             url("v1/profiles/language")
             parameter("uuid", uuid.toString())

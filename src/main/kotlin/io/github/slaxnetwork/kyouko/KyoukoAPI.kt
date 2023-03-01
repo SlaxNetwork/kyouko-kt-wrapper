@@ -3,6 +3,7 @@ package io.github.slaxnetwork.kyouko
 import io.github.slaxnetwork.kyouko.services.v1.IconService
 import io.github.slaxnetwork.kyouko.services.v1.ProfileService
 import io.github.slaxnetwork.kyouko.services.v1.RankService
+import io.github.slaxnetwork.kyouko.services.v1.ServerService
 import io.github.slaxnetwork.kyouko.utils.JSON
 import io.ktor.client.*
 import io.ktor.client.engine.cio.*
@@ -18,6 +19,7 @@ class KyoukoAPI(
     private val client = createClient()
 
     val profiles = ProfileService(client)
+    val servers = ServerService(client)
     val ranks = RankService(client)
     val icons = IconService(client)
 

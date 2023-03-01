@@ -22,12 +22,12 @@ internal suspend inline fun <reified T> HttpResponse.bodyAsNullableResult(): Res
     return Result.success(body<PayloadData<T>>().data)
 }
 
-internal suspend inline fun HttpResponse.emptyBody(): Result<EmptyBody> {
+internal suspend inline fun HttpResponse.emptyBody(): Result<Unit> {
     if(!status.isSuccess()) {
         return Result.failure(body<RouteError>())
     }
 
-    return this.bodyAsNullableResult()
+    return Result.success(Unit)
 }
 
 /**
@@ -35,4 +35,4 @@ internal suspend inline fun HttpResponse.emptyBody(): Result<EmptyBody> {
  * with the response and is purely just to check whether it was a success or not.
  */
 // amazing.
-internal typealias EmptyBody = Void?
+internal typealias EmptyBody = Void

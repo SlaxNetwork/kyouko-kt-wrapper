@@ -31,7 +31,7 @@ publishing {
     repositories {
         maven {
             name = "GitHubPackages"
-            url = URI.create("https://maven.pkg.github.com/SlaxNetwork/test-proj")
+            url = URI.create("https://maven.pkg.github.com/SlaxNetwork/kyouko-kt-wrapper")
             credentials {
                 username = System.getenv("GITHUB_ACTOR")
                 password = System.getenv("GITHUB_TOKEN")

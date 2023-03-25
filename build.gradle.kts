@@ -8,7 +8,7 @@ plugins {
 }
 
 group = "io.github.slaxnetwork"
-version = "0.0.2"
+version = "0.0.3"
 
 repositories {
     mavenCentral()
@@ -23,6 +23,11 @@ dependencies {
 
     implementation("org.jetbrains.kotlin:kotlin-stdlib:1.8.10")
     implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.4.1")
+}
+
+java {
+    withSourcesJar()
+    withJavadocJar()
 }
 
 publishing {

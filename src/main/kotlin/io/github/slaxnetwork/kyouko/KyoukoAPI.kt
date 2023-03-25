@@ -43,9 +43,9 @@ class KyoukoAPI(
         }
 
         defaultRequest {
-            host = System.getenv("API_HOST") ?: "0.0.0.0"
+            host = System.getProperty("API_HOST") ?: "0.0.0.0"
             port = runCatching {
-                System.getenv("API_PORT").toInt()
+                System.getProperty("API_PORT").toInt()
             }.getOrNull() ?: 3000
 
             url {

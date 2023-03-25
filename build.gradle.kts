@@ -1,5 +1,3 @@
-import java.net.URI
-
 val ktor_version: String by project
 
 plugins {
@@ -31,7 +29,7 @@ publishing {
     repositories {
         maven {
             name = "GitHubPackages"
-            url = URI.create("https://maven.pkg.github.com/SlaxNetwork/kyouko-kt-wrapper")
+            url = uri("https://maven.pkg.github.com/SlaxNetwork/kyouko-kt-wrapper")
             credentials {
                 username = System.getenv("GITHUB_ACTOR")
                 password = System.getenv("GITHUB_TOKEN")

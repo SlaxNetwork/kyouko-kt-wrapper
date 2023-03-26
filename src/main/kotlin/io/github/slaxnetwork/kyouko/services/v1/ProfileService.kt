@@ -1,16 +1,13 @@
 package io.github.slaxnetwork.kyouko.services.v1
 
+import io.github.slaxnetwork.kyouko.client
 import io.github.slaxnetwork.kyouko.models.profile.Profile
-import io.github.slaxnetwork.kyouko.utils.EmptyBody
 import io.github.slaxnetwork.kyouko.utils.bodyAsResult
 import io.github.slaxnetwork.kyouko.utils.emptyBody
-import io.ktor.client.*
 import io.ktor.client.request.*
-import java.util.UUID
+import java.util.*
 
-class ProfileService(
-    private val client: HttpClient
-) {
+object ProfileService {
     suspend fun findByUUID(uuid: UUID): Result<Profile> {
         return client.get {
             url("/v1/profiles")

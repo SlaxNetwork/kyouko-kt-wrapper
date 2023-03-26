@@ -1,16 +1,13 @@
 package io.github.slaxnetwork.kyouko.services.v1
 
+import io.github.slaxnetwork.kyouko.client
 import io.github.slaxnetwork.kyouko.models.server.ServerInstance
 import io.github.slaxnetwork.kyouko.models.server.requests.CreateServerBody
-import io.github.slaxnetwork.kyouko.utils.EmptyBody
 import io.github.slaxnetwork.kyouko.utils.bodyAsResult
 import io.github.slaxnetwork.kyouko.utils.emptyBody
-import io.ktor.client.*
 import io.ktor.client.request.*
 
-class ServerService(
-    private val client: HttpClient
-) {
+object ServerService {
     suspend fun registerInstance(ip: String, port: Int, type: String): Result<String> {
         return client.post("/v1/servers") {
             setBody(CreateServerBody(ip, port, type))

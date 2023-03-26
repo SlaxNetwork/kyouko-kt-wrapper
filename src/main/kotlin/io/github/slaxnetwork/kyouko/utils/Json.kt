@@ -1,5 +1,6 @@
 package io.github.slaxnetwork.kyouko.utils
 
+import io.github.slaxnetwork.kyouko.utils.serializer.InstantSerializer
 import kotlinx.serialization.KSerializer
 import kotlinx.serialization.descriptors.PrimitiveKind
 import kotlinx.serialization.descriptors.PrimitiveSerialDescriptor
@@ -8,6 +9,7 @@ import kotlinx.serialization.encoding.Decoder
 import kotlinx.serialization.encoding.Encoder
 import kotlinx.serialization.json.Json
 import kotlinx.serialization.modules.SerializersModule
+import java.time.Instant
 import java.util.*
 
 internal val JSON = Json {
@@ -16,7 +18,7 @@ internal val JSON = Json {
 
     serializersModule = SerializersModule {
         contextual(UUID::class, UUIDSerializer)
-//        contextual(Instant::class, InstantSerializer)
+        contextual(Instant::class, InstantSerializer)
     }
 }
 

@@ -29,6 +29,8 @@ internal val client = HttpClient(CIO) {
     }
 
     defaultRequest {
+        contentType(ContentType.Application.Json)
+
         host = System.getProperty("API_HOST")
             ?: System.getenv("API_HOST")
             ?: "0.0.0.0"
@@ -46,7 +48,5 @@ internal val client = HttpClient(CIO) {
             ?: System.getenv("API_SECRET")
             ?: "KYOUKO"
         bearerAuth(secret)
-
-        contentType(ContentType.Application.Json)
     }
 }

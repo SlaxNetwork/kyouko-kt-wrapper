@@ -7,27 +7,57 @@ import io.ktor.client.statement.*
 import io.ktor.http.*
 
 internal suspend inline fun <reified T> HttpResponse.bodyAsResult(): Result<T> {
-    if(!status.isSuccess()) {
-        return Result.failure(body<RouteError>())
-    }
+    try {
+        if(!status.isSuccess()) {
+            return Result.failure(body<RouteError>())
+        }
 
-    return Result.success(body<PayloadData<T>>().data!!)
+        return Result.success(body<PayloadData<T>>().data!!)
+    } catch(ex: Exception) {
+        ex.printStackTrace()
+
+        return Result.failure(RouteError(
+            true,
+            "deserialization error on kyouko-kt-wrapper",
+            500
+        ))
+    }
 }
 
 internal suspend inline fun <reified T> HttpResponse.bodyAsNullableResult(): Result<T?> {
-    if(!status.isSuccess()) {
-        return Result.failure(body<RouteError>())
-    }
+    try {
+        if(!status.isSuccess()) {
+            return Result.failure(body<RouteError>())
+        }
 
-    return Result.success(body<PayloadData<T>>().data)
+        return Result.success(body<PayloadData<T>>().data)
+    } catch(ex: Exception) {
+        ex.printStackTrace()
+
+        return Result.failure(RouteError(
+            true,
+            "deserialization error on kyouko-kt-wrapper",
+            500
+        ))
+    }
 }
 
 internal suspend inline fun HttpResponse.emptyBody(): Result<Unit> {
-    if(!status.isSuccess()) {
-        return Result.failure(body<RouteError>())
-    }
+    try {
+        if(!status.isSuccess()) {
+            return Result.failure(body<RouteError>())
+        }
 
-    return Result.success(Unit)
+        return Result.success(Unit)
+    } catch(ex: Exception) {
+        ex.printStackTrace()
+
+        return Result.failure(RouteError(
+            true,
+            "deserialization error on kyouko-kt-wrapper",
+            500
+        ))
+    }
 }
 
 /**
